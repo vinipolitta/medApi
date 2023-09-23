@@ -55,5 +55,9 @@ import medico.api.medApi.endereco.Endereco;
     public void excluir() {
         this.ativo = false;
     }
+
+    public void recuperarMedico() {
+        this.ativo = true;
+    }
 }
 
