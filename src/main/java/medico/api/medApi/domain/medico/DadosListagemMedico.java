@@ -1,11 +1,4 @@
-package medico.api.medApi.medico;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import medico.api.medApi.endereco.DadosEndereco;
+package medico.api.medApi.domain.medico;
 
 public record DadosListagemMedico(
         long id,

@@ -1,10 +1,9 @@
 package medico.api.medApi.controller;
 
 import jakarta.validation.Valid;
-import medico.api.medApi.paciente.*;
+import medico.api.medApi.domain.paciente.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -15,8 +14,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/pacientes")
 public class PacienteController {
 
-    @Autowired
-    private PacienteRepository repository;
+    private final PacienteRepository repository;
+
+    public PacienteController(PacienteRepository repository) {
+        this.repository = repository;
+    }
 
     @PostMapping
     @org.springframework.transaction.annotation.Transactional
