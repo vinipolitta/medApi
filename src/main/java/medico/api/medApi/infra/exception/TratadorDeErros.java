@@ -1,4 +1,4 @@
-package medico.api.medApi.infra;
+package medico.api.medApi.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.mapping.Any;
