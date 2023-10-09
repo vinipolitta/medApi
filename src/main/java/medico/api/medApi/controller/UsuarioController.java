@@ -1,5 +1,6 @@
 package medico.api.medApi.controller;
 
+import medico.api.medApi.domain.usuario.UserService;
 import medico.api.medApi.domain.usuario.Usuario;
 import medico.api.medApi.domain.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsuarios() {
@@ -34,14 +38,14 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
-        Usuario createdUsuario = usuarioRepository.save(usuario);
+        Usuario createdUsuario = userService.createUserAuth(usuario);
         return new ResponseEntity<>(createdUsuario, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
         if (usuarioRepository.existsById(id)) {
-            Usuario updatedUsuario = usuarioRepository.save(usuario);
+            Usuario updatedUsuario = userService.updateUser(usuario);
             return new ResponseEntity<>(updatedUsuario, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -60,5 +60,9 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public void setPassword(String senha) {
+        this.senha = senha;
+    }
 }
 
