@@ -36,6 +36,12 @@ public class UsuarioController {
         }
     }
 
+    @PostMapping("cr")
+    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
+        Usuario createdUsuario = userService.createUserAuth(usuario);
+        return new ResponseEntity<>(createdUsuario, HttpStatus.CREATED);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
         if (usuarioRepository.existsById(id)) {

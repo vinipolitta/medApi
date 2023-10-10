@@ -2,7 +2,6 @@ package medico.api.medApi.domain.usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,7 +26,8 @@ public class UserService {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         } else {
             // Se a senha não foi fornecida, mantenha a senha atual no banco de dados
-            Usuario existingUser = userRepository.findById(user.getId()).orElse(null);
+            Usuario existingUser;
+            existingUser = userRepository.findById(user.getId()).orElse(null);
             if (existingUser != null) {
                 user.setPassword(existingUser.getPassword());
             }

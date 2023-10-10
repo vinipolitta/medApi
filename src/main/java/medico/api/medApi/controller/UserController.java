@@ -8,33 +8,14 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
-
 import java.util.stream.Stream;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/admin")
 public class UserController {
-
     private final UsuarioRepository repository;
-
     public UserController(UsuarioRepository repository) {
         this.repository = repository;
-    }
-
-    @PostMapping("/create")
-    @Transactional
-    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroUsuario dados, UriComponentsBuilder uriBuilder) {
-        var existUser = repository.findByLogin(dados.login());
-        if ( existUser != null) {
-            return ResponseEntity.badRequest().body("Login já está em uso. Escolha outro login.");
-        }
-        var usuario = new Usuario(dados);
-        repository.save(usuario);
-
-        var uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(usuario.getId()).toUri();
-
-        return ResponseEntity.created(uri).body(new DadosDetalhamentoUsuario(usuario));
     }
 
     @GetMapping
