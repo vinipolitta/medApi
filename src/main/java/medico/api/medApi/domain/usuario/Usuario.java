@@ -26,6 +26,33 @@ public class Usuario implements UserDetails {
     private String login;
     private String senha;
     private String role = "ROLE_USER";
+    private boolean ativo = true;
+
+    public void atualizarInformacoes(DadosAtualizacaoUsuario dados) {
+        if (dados.senha() != null) {
+            this.senha = dados.senha();
+        }
+        if (dados.login() != null) {
+            this.login = dados.login();
+        }
+        if (dados.role() != null) {
+            this.role = dados.role();
+        }
+    }
+
+    public Usuario(DadosCadastroUsuario dados) {
+        this.login = dados.login();
+        this.senha = dados.senha();
+    }
+
+    public void excluir() {
+        this.ativo = false;
+    }
+
+    public void recuperarPaciente() {
+        this.ativo = true;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -40,6 +67,10 @@ public class Usuario implements UserDetails {
     @Override
     public String getUsername() {
         return login;
+    }
+
+    public boolean getAtivo() {
+        return ativo;
     }
 
     @Override
@@ -65,5 +96,6 @@ public class Usuario implements UserDetails {
     public void setPassword(String senha) {
         this.senha = senha;
     }
+
 }
 

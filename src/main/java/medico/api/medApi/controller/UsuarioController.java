@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/admin/usuarios")
 public class UsuarioController {
 
     @Autowired
@@ -34,12 +34,6 @@ public class UsuarioController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    @PostMapping
-    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
-        Usuario createdUsuario = userService.createUserAuth(usuario);
-        return new ResponseEntity<>(createdUsuario, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
