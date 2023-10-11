@@ -1,6 +1,8 @@
-package medico.api.medApi.domain.medico;
+package medico.api.medApi.domain.medico.dto;
 
 import medico.api.medApi.domain.endereco.Endereco;
+import medico.api.medApi.domain.medico.Especialidade;
+import medico.api.medApi.domain.medico.Medico;
 
 public record DadosDetalhamentoMedico(
         Long id,

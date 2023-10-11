@@ -1,4 +1,6 @@
-package medico.api.medApi.domain.usuario;
+package medico.api.medApi.domain.usuario.dto;
+
+import medico.api.medApi.domain.usuario.Usuario;
 
 public record DadosDetalhamentoUsuario(
         Long id,

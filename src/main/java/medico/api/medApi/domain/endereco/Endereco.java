@@ -3,6 +3,7 @@ import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import medico.api.medApi.domain.endereco.dto.DadosEndereco;
 
 @Embeddable
 @Getter

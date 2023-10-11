@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import medico.api.medApi.domain.endereco.Endereco;
+import medico.api.medApi.domain.medico.dto.DadosAtualizacaoMedico;
+import medico.api.medApi.domain.medico.dto.DadosCadastroMedico;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
@@ -49,7 +51,6 @@ import medico.api.medApi.domain.endereco.Endereco;
         if (dados.endereco() != null) {
             this.endereco.atualizarInformacoes(dados.endereco());
         }
-
     }
 
     public void excluir() {

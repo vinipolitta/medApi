@@ -1,11 +1,12 @@
-package medico.api.medApi.domain.medico;
+package medico.api.medApi.domain.medico.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import medico.api.medApi.domain.endereco.DadosEndereco;
+import medico.api.medApi.domain.endereco.dto.DadosEndereco;
+import medico.api.medApi.domain.medico.Especialidade;
 
 public record DadosCadastroMedico(
         @NotBlank(message = "Nome é obrigatório")

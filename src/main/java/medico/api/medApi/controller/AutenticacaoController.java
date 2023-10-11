@@ -2,6 +2,9 @@ package medico.api.medApi.controller;
 
 import jakarta.validation.Valid;
 import medico.api.medApi.domain.usuario.*;
+import medico.api.medApi.domain.usuario.dto.DadosAutenticacao;
+import medico.api.medApi.domain.usuario.dto.DadosCadastroUsuario;
+import medico.api.medApi.domain.usuario.dto.DadosDetalhamentoUsuario;
 import medico.api.medApi.infra.security.DadosTokenJWT;
 import medico.api.medApi.infra.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;

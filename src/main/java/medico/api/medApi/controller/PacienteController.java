@@ -2,6 +2,10 @@ package medico.api.medApi.controller;
 
 import jakarta.validation.Valid;
 import medico.api.medApi.domain.paciente.*;
+import medico.api.medApi.domain.paciente.dto.DadosAtualizacaoPaciente;
+import medico.api.medApi.domain.paciente.dto.DadosCadastroPaciente;
+import medico.api.medApi.domain.paciente.dto.DadosDetalhamentoPaciente;
+import medico.api.medApi.domain.paciente.dto.DadosListagemPaciente;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Page;

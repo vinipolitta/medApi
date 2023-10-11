@@ -1,4 +1,4 @@
-package medico.api.medApi.domain.usuario;
+package medico.api.medApi.domain.usuario.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

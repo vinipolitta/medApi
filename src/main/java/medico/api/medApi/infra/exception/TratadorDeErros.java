@@ -1,7 +1,6 @@
 package medico.api.medApi.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.hibernate.mapping.Any;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -52,9 +51,32 @@ public class TratadorDeErros {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +ex.getLocalizedMessage());
     }
 
+    @ExceptionHandler(MedicoNaoEncontradoException.class)
+    public ResponseEntity<String> tratarMedicoNaoEncontrado(MedicoNaoEncontradoException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
     private record DadosErroValidacao(String campo, String mensagem) {
         public DadosErroValidacao(FieldError erro) {
             this(erro.getField(), erro.getDefaultMessage());
+        }
+    }
+
+
+    public static class MedicoNaoEncontradoException extends RuntimeException {
+        public MedicoNaoEncontradoException(Long id) {
+            super("Médico com ID " + id + " não encontrado.");
+        }
+    }
+
+    @ExceptionHandler(AcessoNegadoException.class)
+    public ResponseEntity<String> tratarAcessoNegado(AcessoNegadoException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+    }
+
+    public static class AcessoNegadoException extends RuntimeException {
+        public AcessoNegadoException() {
+            super("Acesso negado. Você não tem permissão para acessar este recurso.");
         }
     }
 }

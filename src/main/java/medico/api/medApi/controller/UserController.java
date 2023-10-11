@@ -2,6 +2,9 @@ package medico.api.medApi.controller;
 
 import jakarta.validation.Valid;
 import medico.api.medApi.domain.usuario.*;
+import medico.api.medApi.domain.usuario.dto.DadosAtualizacaoUsuario;
+import medico.api.medApi.domain.usuario.dto.DadosDetalhamentoUsuario;
+import medico.api.medApi.domain.usuario.dto.DadosListagemUsuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -22,6 +25,7 @@ public class UserController {
     public ResponseEntity<Page<DadosListagemUsuario>> listar(@PageableDefault(sort = {"login"}) Pageable paginacao) {
         var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemUsuario::new);
         return ResponseEntity.ok(page);
+
     }
 
     @GetMapping("/all")
@@ -39,7 +43,7 @@ public class UserController {
         return ResponseEntity.ok(new DadosDetalhamentoUsuario(usuario));
     }
 
-    @DeleteMapping("/excluir/{id}")
+    @DeleteMapping("{id}")
     @Transactional
     public ResponseEntity<DadosAtualizacaoUsuario> excluir(@PathVariable Long id) {
         var usuario = repository.getReferenceById(id);
