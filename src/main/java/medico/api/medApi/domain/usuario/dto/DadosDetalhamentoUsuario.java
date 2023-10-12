@@ -13,7 +13,7 @@ public record DadosDetalhamentoUsuario(
         this(
                 usuario.getId(),
                 usuario.getLogin(),
-                usuario.getRole(),
+                String.valueOf(usuario.getRole()),
                 usuario.getAtivo()
         );
     }

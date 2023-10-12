@@ -12,6 +12,6 @@ public record DadosListagemUsuario(
      ) {
 
      public DadosListagemUsuario(Usuario medico){
-          this(medico.getId(), medico.getLogin(), medico.getSenha(), medico.getRole(), medico.getAtivo());
+          this(medico.getId(), medico.getLogin(), medico.getSenha(), String.valueOf(medico.getRole()), medico.getAtivo());
      }
 }
