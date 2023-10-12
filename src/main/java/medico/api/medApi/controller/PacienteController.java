@@ -1,5 +1,6 @@
 package medico.api.medApi.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import medico.api.medApi.domain.paciente.*;
 import medico.api.medApi.domain.paciente.dto.DadosAtualizacaoPaciente;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/pacientes")
+@SecurityRequirement(name = "bearer-key")
 public class PacienteController {
 
     private final PacienteRepository repository;

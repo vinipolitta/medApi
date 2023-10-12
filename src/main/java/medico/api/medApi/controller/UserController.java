@@ -1,5 +1,6 @@
 package medico.api.medApi.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import medico.api.medApi.domain.usuario.*;
 import medico.api.medApi.domain.usuario.dto.DadosAtualizacaoUsuario;
@@ -15,6 +16,7 @@ import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/admin")
+@SecurityRequirement(name = "bearer-key")
 public class UserController {
     private final UsuarioRepository repository;
     public UserController(UsuarioRepository repository) {
