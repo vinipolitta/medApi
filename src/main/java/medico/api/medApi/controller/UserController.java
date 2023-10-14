@@ -27,7 +27,6 @@ public class UserController {
     public ResponseEntity<Page<DadosListagemUsuario>> listar(@PageableDefault(sort = {"login"}) Pageable paginacao) {
         var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemUsuario::new);
         return ResponseEntity.ok(page);
-
     }
 
     @GetMapping("/all")

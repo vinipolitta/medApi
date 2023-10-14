@@ -27,7 +27,8 @@ public class Usuario implements UserDetails {
     private Long id;
     private String login;
     private String senha;
-    private String role = "ROLE_USER";
+    @Enumerated(EnumType.STRING)
+    private Roles role = Roles.ROLE_USER;
     private boolean ativo = true;
 
     public void atualizarInformacoes(DadosAtualizacaoUsuario dados) {
@@ -58,8 +59,10 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role));
+        String roleName = role.toString(); // Converte o objeto Roles em uma representação de String
+        return List.of(new SimpleGrantedAuthority(roleName));
     }
+
 
     @Override
     public String getPassword() {
