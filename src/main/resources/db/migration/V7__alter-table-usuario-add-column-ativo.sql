@@ -1,1 +1,1 @@
-alter table usuarios add ativo boolean not null;
+alter table usuarios add ativo BOOLEAN;
